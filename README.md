@@ -44,7 +44,26 @@ Redis* [here](./Motivation.md).
   instantiated and configured.
 * [environment](./environment): A docker-compose environment for the project.
 
-### Prerequisites
+## Scenario
+
+Let's suppose a vital signs monitor device that monitors a patient's vital signs, like breath rate, heart rate and body temperature, by sending HL7v2 ORU-R01 messages to a health information system. 
+The **ORU-R01** (Unsolicited observation result) message in HL7 is used to transmit observations and results, which could include vital signs information, laboratory test results, radiology reports, etc.
+
+The following is an example of an ORU-R01 message:
+
+```text
+MSH|^~\&|MonitorDevice|MonitorApp|Hospital|HIS|20230801||ORU^R01|MSG00001|P|2.3|
+PID|1|123456|78901234||Doe^John^^Mr.||19900101|M|||123 Main St.^^City^ST^12345||||S|MRN123456789|1234567890|
+OBR|1|123456|78901234|Vital Signs^Monitor|||20230801103000|||123^Smith^John^Dr.^^^|||||||||||ADM1234567890|20230801103000|
+OBX|1|NM|9279-1^Respiratory rate^LN||20|/min||A|||F|||20230801103000|
+OBX|2|NM|8867-4^Heart rate^LN||80|bpm|||||F|||20230801103000|
+OBX|3|NM|8310-5^Body temperature^LN||37.0|Cel|||||F|||20230801103000|
+OBX|4|NM|9279-1^Respiratory rate^LN||22|/min|||||F|||20230801103500|
+OBX|5|NM|8867-4^Heart rate^LN||85|bpm|||||F|||20230801103500|
+OBX|6|NM|8310-5^Body temperature^LN||37.1|Cel|||||F|||20230801103500|
+```
+
+## Prerequisites
 
 * Docker and docker compose installed on your machine
 * Java 17+
