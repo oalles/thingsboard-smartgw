@@ -1,0 +1,32 @@
+spring:
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+mqtt:
+  host: thingsboard.cloud # broker.hivemq.com
+  username: De5YrU4sxAddf1JK9pPa # The TB Gateway device access token
+#  password:
+
+application:
+  bridge-definitions:
+    - name: telemetry
+      direction: REDIS_TO_MQTT
+      streamKey: telemetry
+      topic: v1/gateway/telemetry
+    - name: attributes
+      direction: REDIS_TO_MQTT
+      streamKey: attributes
+      topic: v1/gateway/attributes
+    - name: attributes
+      direction: MQTT_TO_REDIS
+      streamKey: attribute.updates
+      topic: v1/gateway/attributes
+
+logging:
+  level:
+    root: info
+    es.omarall: debug
+    org.springframework.data.redis: info
+    com.hivemq: info

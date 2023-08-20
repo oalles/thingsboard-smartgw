@@ -1,0 +1,27 @@
+# This is the endpoint of incoming requests - HL7 Server.
+hl7-server:
+  hostname: localhost
+  port: 8888
+
+# Utility Route - HL7 producer from file definitions
+file-producer:
+  enabled: true # Enables a utility route - We can drop HLv2 messages into a folder for testing and development
+  input-dir: /tmp/hl7
+  delay-in-seconds: 5
+
+camel.springboot.main-run-controller: true
+logging:
+  level:
+    es.omarall: DEBUG
+    org.apache.camel: INFO
+
+#tb-smart-gateway:
+#  attributes-key: attributes2
+#  telemetry-key: telemetry2
+#  attribute-updates-key = "attributes.updates";
+
+#spring:
+#  data:
+#    redis:
+#      host: localhost
+#      port: 6379

@@ -1,0 +1,12 @@
+version: '2.1'
+services:
+  redis:
+    restart: always
+    image: 'redis:latest'
+    mem_limit: 64m
+    ports:
+      - 6379:6379
+  #    command: >
+  #      --requirepass ChangePasswordHere
+
+ 
