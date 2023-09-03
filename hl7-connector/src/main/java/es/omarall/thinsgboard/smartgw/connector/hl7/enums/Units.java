@@ -1,7 +1,9 @@
 package es.omarall.thinsgboard.smartgw.connector.hl7.enums;
 
 import es.omarall.thinsgboard.smartgw.connector.Constants;
+import lombok.Getter;
 
+@Getter
 public enum Units {
     RESPIRATORY_RATE(Constants.RESPIRATORY_RATE_UNIT), HEART_RATE(Constants.HEART_RATE_UNIT), BODY_TEMPERATURE(Constants.BODY_TEMPERATURE_UNIT);
 
@@ -25,7 +27,4 @@ public enum Units {
         }
     }
 
-    public String getUnit() {
-        return unit;
-    }
 }

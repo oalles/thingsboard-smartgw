@@ -10,8 +10,8 @@ Thingsboard, while having a solution open for future additional complexities.
 
 ![TB Smart Gateway diagram](./images/tb-smart-gateway.png)
 
-It will be comprised of 3 running services: a `Redis` instance and 2 spring boot services: `redisx-mqtt-bridge` and
-the `hl7-connector`.
+It will be comprised of 4 running services: a `Redis` instance and 2 spring boot services: `redisx-mqtt-bridge`,
+a `hl7-connector` and a `video-connector`.
 
 ## Motivation
 
@@ -26,6 +26,8 @@ Redis* [here](./Motivation.md).
 * Apache Camel HL7v2 camel integration.
 * Spring Data Redis reactive streams.
 * HiveMQ reactive java MQTT client.
+* Apache Camel 4 component development: Video Input Output Component.
+* Deep Java Library (DJL) integration. Yolo 5 detection.
 
 ## Modules Description
 
@@ -42,12 +44,17 @@ Redis* [here](./Motivation.md).
   for the previously described library so a `Thingsboard Smart Gateway Java Connector` may automatically have
   a `ThingsBoard Redis Streams Gateway API` [publisher](./thingsboard-smartgw-connector-base/src/main/java/es/omarall/thingsboard/smartgw/connector/base/TbSmartGatewayPublisher.java)
   instantiated and configured.
-* [environment](./environment): A docker-compose environment for the project.
+* [environment](./environment):
+* [video-connector](./video-connector): A Thingsboard Smart Gateway sample connector *service* for video input and
+  output based on Spring Boot 3 and Apache Camel 4.
+* [camel-video-io](./camel-video-io): An Apache Camel component for video input and output based on javacv library.
 
-## Scenario
+## HL7 Scenario
 
-Let's suppose a vital signs monitor device that monitors a patient's vital signs, like breath rate, heart rate and body temperature, by sending HL7v2 ORU-R01 messages to a health information system. 
-The **ORU-R01** (Unsolicited observation result) message in HL7 is used to transmit observations and results, which could include vital signs information, laboratory test results, radiology reports, etc.
+Let's suppose a vital signs monitor device that monitors a patient's vital signs, like breath rate, heart rate and body
+temperature, by sending HL7v2 ORU-R01 messages to a health information system.
+The **ORU-R01** (Unsolicited observation result) message in HL7 is used to transmit observations and results, which
+could include vital signs information, laboratory test results, radiology reports, etc.
 
 The following is an example of an ORU-R01 message:
 
@@ -173,3 +180,21 @@ Check the Thingsboard console to verify data transmission. A device named `Monit
 telemetry and attributes will be updated accordingly.
 
 ![HL7 devices](./images/hl7devices.gif)
+
+## UPDATE: Video Scenario
+
+One common concern when considering Apache Camel for integration is the availability of specific clients or connectors.
+Some might wonder if Apache Camel remains a viable choice when their
+desired [component](https://camel.apache.org/components/4.0.x/index.html) isn't readily available.
+
+We 'll explore a hypothetical situation: We need to add a video connector to our gateway to connect to a video source,
+perform person and car detections on each frame, and transmit the results to Thingsboard.
+All be built on top of Apache Camel.
+
+To achieve this, we create two components:
+
+* [Video-IO](./camel-video-io) Camel Component: This component facilitates video input and output for Apache Camel.
+* [Video-Connector](./video-connector) for the Gateway: Implemented as a Camel route, this component leverages Yolo V5
+  detections to process video data , relaying the information to Thingsboard.
+
+![Video detections](./images/video-detections.gif)

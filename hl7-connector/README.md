@@ -38,12 +38,12 @@ TbSmartGatewayPublisher instance that will publish to the corresponding redis st
 * Docker installed on your machine
 * Java 17+
 * Maven 3+ installed
-* A running Thingsboard server or a [Thingsboard cloud] account.
+* A running Thingsboard server or a [Thingsboard cloud](https://thingsboard.cloud/) account.
 
 ### Installation
 
 1. Clone this repository: `git clone https://github.com/oalles/thingsboard-smartgw`
-2. Navigate to the project directory: `hl7-connector`
+2. Navigate to the project directory: `thingsboard-smartgw/hl7-connector`
 3. Build the project using Maven: `mvn clean install -DskipTests`
 4. Configure the HL7 Connector in `application.properties`.
 

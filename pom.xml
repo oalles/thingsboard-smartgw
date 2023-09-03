@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>es.omarall</groupId>
     <artifactId>thingsboard-smartgw</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>thingsboard-smartgw</name>
@@ -13,15 +13,19 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>17</java.version>
-        <spring-boot.version>3.1.2</spring-boot.version>
+        <spring-boot.version>3.1.3</spring-boot.version>
         <maven-compiler.version>3.8.1</maven-compiler.version>
+        <camel.version>4.0.0</camel.version>
+        <javacv.version>1.5.9</javacv.version>
     </properties>
 
     <modules>
         <module>redisx-mqtt-bridge</module>
         <module>thingsboard-smartgw-connector-base</module>
         <module>thingsboard-smartgw-connector-starter</module>
+        <module>camel-video-io</module>
         <module>hl7-connector</module>
+        <module>video-connector</module>
     </modules>
 
     <dependencies>

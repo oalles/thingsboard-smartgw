@@ -5,7 +5,7 @@
     <parent>
         <groupId>es.omarall</groupId>
         <artifactId>thingsboard-smartgw</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>0.0.2-SNAPSHOT</version>
     </parent>
     <artifactId>thingsboard-smartgw-connector-starter</artifactId>
     <description>An spring boot starter for thingsboard-smartgw-connector-base</description>
@@ -13,7 +13,7 @@
         <dependency>
             <groupId>es.omarall</groupId>
             <artifactId>thingsboard-smartgw-connector-base</artifactId>
-            <version>${version}</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

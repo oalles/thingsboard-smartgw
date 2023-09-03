@@ -1,7 +1,9 @@
 package es.omarall.thinsgboard.smartgw.connector.hl7.enums;
 
 import es.omarall.thinsgboard.smartgw.connector.Constants;
+import lombok.Getter;
 
+@Getter
 public enum ObservationIdentifier {
     RESPIRATORY_RATE(Constants.RESPIRATORY_RATE_LOINC_CODE, "breath_rate"), HEART_RATE(Constants.HEART_RATE_LOINC_CODE, "heart_rate"), BODY_TEMPERATURE(Constants.BODY_TEMPERATURE_LOINC_CODE, "body_temp");
 
@@ -27,11 +29,4 @@ public enum ObservationIdentifier {
         }
     }
 
-    public String getCode() {
-        return code;
-    }
-
-    public String getKey() {
-        return key;
-    }
 }

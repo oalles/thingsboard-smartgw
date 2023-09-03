@@ -111,7 +111,8 @@ the ThingsBoard platform.
 ## Custom Connectors
 
 Connectors will be the services that connect to external systems or devices, providing processing pipelines, to perform
-transformative operations on incoming data, to build meaningful telemetry and client attribute payloads, to be routed to the
+transformative operations on incoming data, to build meaningful telemetry and client attribute payloads, to be routed to
+the
 proper **redis streams**: telemetry and attributes.
 
 #### Redis Gears, as serverless data processing engine
@@ -153,4 +154,20 @@ external systems or services, offering a range of features, including:
 
 As a result of these features, Apache Camel is a natural fit for both an integration layer and a data processing layer.
 
-In the project, we provide a sample [HL7-Connector](./hl7-connector) that integrates HL7v2 messages into Thingsboard. 
+In the project, we provide a sample [HL7-Connector](./hl7-connector) that integrates HL7v2 messages into Thingsboard.
+
+## UPDATE: Video Scenario
+
+One common concern when considering Apache Camel for integration is the availability of specific clients or connectors.
+Some might wonder if Apache Camel remains a viable choice when their
+desired [component](https://camel.apache.org/components/4.0.x/index.html) isn't readily available.
+
+We 'll explore a hypothetical situation: We need to add a video connector to our gateway to connect to a video source,
+perform person and car detections on each frame, and transmit the results to Thingsboard.
+All be built on top of Apache Camel.
+
+To achieve this, we create two components:
+
+· [Video-IO](./camel-video-io) Camel Component: This component facilitates video input and output for Apache Camel.
+· [Video-Connector](./video-connector) for the Gateway: As a Camel route, leveraging AI video detections video analytics
+with Thingsboard.

@@ -1,0 +1,21 @@
+video-connector:
+  channel-name: "garage-cam" # A name for the channel, will be the device name in TB
+  capture-address: "/home/omar/Downloads/thieves.webm" # The address of the video source to be streamed [http://195.196.36.242/mjpg/video.mjpg | http://83.56.31.69:80/mjpg/video.mjpg]
+  analysis-quality: ULTRA_DEEP # Defaults to BALANCED
+
+camel.springboot.main-run-controller: true
+logging:
+  level:
+    es.omarall: INFO
+    org.apache.camel: INFO
+
+#tb-smart-gateway:
+#  attributes-key: attributes2
+#  telemetry-key: telemetry2
+#  attribute-updates-key = "attributes.updates";
+
+#spring:
+#  data:
+#    redis:
+#      host: localhost
+#      port: 6379

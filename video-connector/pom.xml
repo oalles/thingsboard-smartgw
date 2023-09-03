@@ -7,10 +7,11 @@
         <artifactId>thingsboard-smartgw</artifactId>
         <version>0.0.2-SNAPSHOT</version>
     </parent>
-    <artifactId>hl7-connector</artifactId>
-    <description>Connects HL7 devices to Thingsboard server</description>
+    <artifactId>video-connector</artifactId>
+    <description>Connects video sources to Thingsboard server</description>
     <properties>
-        <hapi-structures-v23.version>2.3</hapi-structures-v23.version>
+        <djl.version>0.23.0</djl.version>
+        <djl-spring-boot-starter.version>0.23</djl-spring-boot-starter.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -22,37 +23,36 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <!-- DJL BOM -->
+            <dependency>
+                <groupId>ai.djl</groupId>
+                <artifactId>bom</artifactId>
+                <version>${djl.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <dependencies>
         <dependency>
-            <groupId>es.omarall</groupId>
-            <artifactId>thingsboard-smartgw-connector-starter</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.apache.camel.springboot</groupId>
             <artifactId>camel-spring-boot-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.camel.springboot</groupId>
-            <artifactId>camel-hl7-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-netty</artifactId>
             <version>${camel.version}</version>
         </dependency>
         <dependency>
-            <groupId>ca.uhn.hapi</groupId>
-            <artifactId>hapi-structures-v23</artifactId>
-            <version>${hapi-structures-v23.version}</version>
+            <groupId>es.omarall</groupId>
+            <artifactId>camel-video-io</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <scope>runtime</scope>
-            <optional>true</optional>
+            <groupId>ai.djl.spring</groupId>
+            <artifactId>djl-spring-boot-starter-pytorch-auto</artifactId>
+            <version>${djl-spring-boot-starter.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>es.omarall</groupId>
+            <artifactId>thingsboard-smartgw-connector-starter</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

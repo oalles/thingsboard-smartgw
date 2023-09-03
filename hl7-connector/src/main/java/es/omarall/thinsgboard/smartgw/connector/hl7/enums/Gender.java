@@ -1,5 +1,8 @@
 package es.omarall.thinsgboard.smartgw.connector.hl7.enums;
 
+import lombok.Getter;
+
+@Getter
 public enum Gender {
     MALE("M"), FEMALE("F"), NON_BINARY("NB");
 
@@ -21,7 +24,4 @@ public enum Gender {
         }
     }
 
-    public String getCode() {
-        return code;
-    }
 }
